@@ -17,11 +17,11 @@
         @csrf
         <div class="form-group">
             <label>Employee Name</label>
-            <input type="text" name="ename" required="required" class="form-control" placeholder="Enter Employee name" value="{{ $user->ename }}">
+            <input type="text" name="name" required="required" class="form-control" placeholder="Enter Employee name" value="{{ $user->name }}">
         </div>
         <div class="form-group">
             <label>Employee Id </label>
-            <input type="text" name="eid" class="form-control" value="{{ $user->eid }}" disabled>
+            <input type="text" name="user_id" class="form-control" value="{{ $user->user_id }}" disabled>
         <div class="form-group">
             <label>Employee E-mail</label>
             <input type="text" name="email" required="required" class="form-control" placeholder="Enter Employee Email" value="{{ $user->email }}">

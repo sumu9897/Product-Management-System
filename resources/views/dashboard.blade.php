@@ -1,6 +1,6 @@
 @extends('admindashboard')
 
-@section('content')
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <h4>Welcome, {{ Auth::user()->ename }}!</h4>
+                    <h4>Welcome, {{ Auth::user()->name }}!</h4>
                     <p class="lead">You are logged in.</p>
 
                     <div class="mt-4">
@@ -31,4 +31,4 @@
         </div>
     </div>
 </div>
-@endsection
+

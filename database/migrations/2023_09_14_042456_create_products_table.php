@@ -26,7 +26,6 @@ return new class extends Migration
         $table->date('Purchase_Date')->nullable();
         $table->decimal('price', 10, 2)->nullable();  // Assuming price is a decimal
         $table->string('P_WG')->nullable();
-        // $table->timestamps();  // Remove this line if you don't need timestamps
         $table->timestamps();
     });
 }

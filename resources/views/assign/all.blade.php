@@ -25,8 +25,8 @@
         <thead style="text-align: center">
 
      
-            <th>Assign Product</th>
-            <th>Employee Name</th>
+            <th>Assign Product Id</th>
+            <th>Employee ID</th>
             <th>Assign Date</th>
             <th>Status</th>
             <th>Action</th>

@@ -41,7 +41,7 @@
 
         <div class="form-group">
             <label for="document">Product Document</label><br>
-            <input required="required" type="file" name="document">
+            <input  type="file" name="document">
         </div>
 
         <div class="form-group">
@@ -56,8 +56,18 @@
 
         <div class="form-group">
             <label for="SBU">Purchase SBU</label>
-            <input required="required" type="text" name="SBU" class="form-control" placeholder="Enter Purchase SBU">
+            <select required="required" name="SBU" class="form-control">
+                <option value="" disabled selected>Select Purchase SBU</option>
+                <option value="JMI Group">JMI Group</option>
+                <option value="JMIBL">JMIBL</option>
+                <option value="JHL">JHL</option>
+                <option value="JMEL">JMEL</option>
+                <option value="JFL">JFL</option>
+                <option value="JGL">JGL</option>
+                <option value="JSL">JSL</option>
+            </select>
         </div>
+        
 
         <div class="form-group">
             <label>Product Status</label><br>

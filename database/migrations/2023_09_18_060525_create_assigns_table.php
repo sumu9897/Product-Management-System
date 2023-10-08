@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('assigns', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_serial');
+            $table -> string ('product_name');
             $table->unsignedBigInteger('user_id');
+            $table-> string ('user_name');
             $table->date('adate');
             $table->string('status')->nullable();
             $table->date('rdate')->nullable();

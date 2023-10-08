@@ -48,7 +48,9 @@ class AssignController extends Controller
 
             
             'product_serial' => $request->product_serial,
+            'product_name' => $request->product_name,
             'user_id' => $request->user_id,
+            'user_name' => $request->user_name,
             'adate' => $request-> adate,
             'status' => $request-> status,
             'rdate' => $request-> rdate,
@@ -100,11 +102,13 @@ class AssignController extends Controller
 
         $assign>update([
             
-            'product_serial' => $request ->product_serial,
-            'user_id' => $request ->user_eid,
-            'adate' => $request -> adate,
+            'product_serial' => $request->product_serial,
+            'product_name' => $request->product_name,
+            'user_id' => $request->user_id,
+            'user_name' => $request->user_name,
+            'adate' => $request-> adate,
             'status' => $request-> status,
-            'rdate' => $request -> rdate,
+            'rdate' => $request-> rdate,
         ]);
 
         return redirect()->back()->with('success', 'updated successfully.');

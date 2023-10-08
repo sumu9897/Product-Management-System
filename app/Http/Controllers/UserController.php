@@ -18,8 +18,8 @@ class UserController extends Controller
 
     if ($search) {
         // Search for users by name or ID
-        $users = User::where('ename', 'like', '%' . $search . '%')
-            ->orWhere('eid', $search)
+        $users = User::where('name', 'like', '%' . $search . '%')
+            ->orWhere('user_id', $search)
             ->paginate(10);
     } else {
         // Retrieve all users
@@ -50,17 +50,23 @@ class UserController extends Controller
     {   
         $user = user::create([
 
-            
 
-            'ename' => $request ->ename,
-            'eid' => rand(100000, 999999),
+            'name' => $request ->name,
+            'user_id' => rand(100000, 999999),
             'email' =>$request -> email,
             'password' => bcrypt($request->password),
             'department' =>$request ->department,
             'number' => $request ->number,
             'jdate' =>$request ->jdate,
-
+            'status' =>1,
+            //'created_by' => auth()->user()->name(),
+            //'created_by' => auth()->user()->name,
+            'profile_image' => $request ->profile_image,
+            'role_as' => $request ->role_as,
+            'user_type' => $request ->user_type,
+            'belongs_to' => $request -> belongs_to,
             
+           
         ]);
 
         return redirect()->back()->with('success', 'user successfully stored.');
@@ -104,12 +110,17 @@ class UserController extends Controller
         $user = user::findOrFail($id);
 
         $user->update([
-            'ename' => $request ->ename,
+            'name' => $request ->name,
             'id' => $request -> id,
             'email' => $request -> email,
             'department' => $request ->department,
             'number' => $request -> number,
+            'status' => $request -> status,
             'jdate' => $request ->jdate,
+            'profile_image' => $request ->profile_image,
+            'role_as' => $request ->role_as,
+            'user_type' => $request ->user_type,
+            'belongs_to' => $request -> belongs_to,
             
         ]);
 

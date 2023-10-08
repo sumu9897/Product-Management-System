@@ -21,7 +21,7 @@
 
         <div class="form-group">
             <label for="ename">Employee Name</label>
-            <input required="required" type="text" name="ename" id="ename" class="form-control" placeholder="Employee Name">
+            <input required="required" type="text" name="name" id="name" class="form-control" placeholder="Employee Name">
         </div>
 
         <div class="form-group">
@@ -47,6 +47,9 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+    
+
 
         <button type="submit" class="btn btn-primary">Add Employee</button>
     </form>

@@ -9,11 +9,11 @@
 
     <div class="form-group">
         <label>Employee Name</label>
-        <input type="text" name="ename" class="form-control" value="{{ $user->ename }}" disabled>
+        <input type="text" name="name" class="form-control" value="{{ $user->name }}" disabled>
     </div>
     <div class="form-group">
         <label>Eployee Id</label>
-        <input type="text" name="eid" class="form-control" value="{{ $user->eid }}" disabled>
+        <input type="text" name="user_id" class="form-control" value="{{ $user->user_id }}" disabled>
     </div>
     <div class="form-group">
         <label>Department</label>
@@ -32,6 +32,10 @@
     <div class="form-group">
         <label>Joining Date</label>
         <input type="date" name="jdate" class="form-control" value="{{ $user->jdate }}" disabled>
+    </div>
+    <div class="form-group">
+        <span class="info-box-text text-center text-muted">Role</span>
+        <span class="info-box-number text-center text-muted mb-0">{{ $user->name }}</span>
     </div>
 
 

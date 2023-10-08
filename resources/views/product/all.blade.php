@@ -1,6 +1,5 @@
 @extends('admindashboard')
 
-@section('content')
     <div class="content">
         <div class="d-flex justify-content-between mb-4">
             <h3>Products List</h3>
@@ -63,4 +62,4 @@
             {{ $products->render() }}
         </div>
     </div>
-@endsection
+

@@ -70,4 +70,5 @@
     @section('content')
         <!-- Your content goes here -->
     @endsection
+    @include('layouts.footer')
 </body>

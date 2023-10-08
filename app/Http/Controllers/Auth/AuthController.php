@@ -124,8 +124,8 @@ class AuthController extends Controller
         $user = User::findOrFail($id);
 
         $user->update([
-            'ename' => $request ->ename,
-            'eid' => $request -> eid,
+            'name' => $request ->name,
+            'user_id' => $request -> user_id,
             'email' => $request ->email,
             'jdate' => $request ->jdate,
             'department'  => $request ->department

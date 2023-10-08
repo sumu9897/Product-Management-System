@@ -32,7 +32,9 @@ class Assign extends Model
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_serial');
+        return $this->belongsTo(Product::class, 'product_name');
     }
+    
     public function products(){
         return $this->belongsTo('App\Models\Product');
     }
@@ -40,6 +42,7 @@ class Assign extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_name');
     }
 
     

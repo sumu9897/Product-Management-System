@@ -19,13 +19,15 @@ class User extends Authenticatable
      */
     protected $fillable = [
 
-        'ename',
-        'eid',
+        'name',
+        'user_id',
         'email',
         'password',
+        'status',
         'department',
         'number',
         'jdate',
+        'created_by',
 
     ];
 
@@ -48,4 +50,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function assignedProducts()
+    {
+        return $this->belongsToMany(Product::class, 'user_products');
+    }
+    public function getNameAttribute($value)
+    {
+        // You can modify the value before returning it
+        return ucfirst($value);
+    }
+
+
 }

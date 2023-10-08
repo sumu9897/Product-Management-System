@@ -155,13 +155,6 @@ class ProductController extends Controller
     }
     // ... existing methods ...
 
-    /**
-     * Search for a product by serial number.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
 
 
 

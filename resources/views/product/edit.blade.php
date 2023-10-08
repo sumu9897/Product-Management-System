@@ -51,8 +51,25 @@
         </div>
         <div class="form-group">
             <label>Purchase SBU</label>
-            <input type="text" name="SBU" required="required" class="form-control" placeholder="purchase SBU" value="{{ $product->SBU }}">
+            <select required="required" name="SBU" class="form-control" id="purchaseSBU">
+                <option value="" disabled selected>Select Purchase SBU</option>
+                <option value="JMI Group">JMI Group</option>
+                <option value="JMIBL">JMIBL</option>
+                <option value="JHL">JHL</option>
+                <option value="JMEL">JMEL</option>
+                <option value="JFL">JFL</option>
+                <option value="JGL">JGL</option>
+                <option value="JSL">JSL</option>
+            </select>
+            
         </div>
+        <script>
+            document.getElementById('purchaseSBU').addEventListener('change', function () {
+                var selectedValue = this.value;
+                console.log("Selected SBU: " + selectedValue);
+                // You can use the selectedValue variable as needed.
+            });
+        </script>
         
         <div class="form-group">
             <label for="exampleInputEmail1">Product Status</label>
