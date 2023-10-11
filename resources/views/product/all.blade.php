@@ -4,9 +4,11 @@
         <div class="d-flex justify-content-between mb-4">
             <h3>Products List</h3>
             <a class="btn btn-success btn-sm" href="{{ route('product.create') }}">Create New</a>
-            <a href="{{ url()->previous() }}">
+            <!--<a href="{{ url()->previous() }}">
                 <i class="fa fa-arrow-circle-o-left"></i>
                 <span>Back</span>
+                <button onclick="printTable()">Print</button>
+                <a href="{{ route('products.download') }}" class="btn btn-primary btn-sm">Download</a>-->
             </a>
         </div>
 
@@ -61,5 +63,12 @@
         <div class="d-flex justify-content-between">
             {{ $products->render() }}
         </div>
+        @include('layouts.footer')
     </div>
 
+<script>
+        function printTable() {
+        // Open the print dialog
+        window.print();
+    }
+</script>

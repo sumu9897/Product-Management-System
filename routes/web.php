@@ -52,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
     Route::get('/product/search', [AssignController::class, 'search'])->name('product.search');
     Route::get('/products/download/{product}', [AssignController::class, 'Document'])->name('product.download');
+    Route::get('/products/download', [AssignController::class, 'download'])->name('products.download');
 
     // Assign routes
     Route::get('/assign/allassign', [AssignController::class, 'all'])->name('assign.all');

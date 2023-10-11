@@ -56,4 +56,5 @@
 
         <button type="submit" class="btn btn-primary">Update Assign Product</button>
     </form>
+    @include('layouts.footer')
 </div>

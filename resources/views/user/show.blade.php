@@ -38,7 +38,6 @@
         <span class="info-box-number text-center text-muted mb-0">{{ $user->name }}</span>
     </div>
 
-
-
     <a href="{{ route('user.edit', ['id' => $user->id]) }}" class="btn btn-success btn-sm">Edit</a>
+    @include('layouts.footer')
 </div>

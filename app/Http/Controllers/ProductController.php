@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 
 class ProductController extends Controller
@@ -154,6 +155,44 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product successfully deleted.');
     }
     // ... existing methods ...
+    // app/Http/Controllers/ProductController.php
+
+
+
+// ...
+
+// public function download()
+// {
+//     $products = Product::all(); // Fetch all products (adjust the model and query as needed)
+
+//     $csvFileName = 'products.csv';
+
+//     // Set the headers for CSV download
+//     $headers = array(
+//         "Content-type"        => "text/csv",
+//         "Content-Disposition" => "attachment; filename=$csvFileName",
+//         "Pragma"              => "no-cache",
+//         "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+//         "Expires"             => "0"
+//     );
+
+//     // Create a file handle
+//     $handle = fopen('php://output', 'w');
+
+//     // Add CSV headers
+//     fputcsv($handle, ['Product Name', 'Product Model', 'Product Serial Number', 'Purchase SBU', 'Product Status']);
+
+//     // Add product data
+//     foreach ($products as $product) {
+//         fputcsv($handle, [$product->name, $product->model, $product->serial, $product->SBU, $product->status]);
+//     }
+
+//     fclose($handle);
+
+//     // Return the response
+//     return Response::make('', 200, $headers);
+// }
+
 
 
 

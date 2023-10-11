@@ -18,7 +18,7 @@ return new class extends Migration
         $table->string('name')->nullable();
         $table->string('model')->nullable();
         $table->string('status')->nullable();
-        $table->text('document')->nullable();  // Assuming document is a longer text
+        $table->json('document')->nullable();  // Assuming document is a longer text
         $table->string('SBU')->nullable();
         $table->string('serial', 7)->unique();
         $table->string('capacity')->nullable();

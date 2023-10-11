@@ -48,9 +48,8 @@
             @enderror
         </div>
 
-    
-
 
         <button type="submit" class="btn btn-primary">Add Employee</button>
     </form>
+    @include('layouts.footer')
 </div>

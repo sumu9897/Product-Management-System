@@ -55,4 +55,5 @@
             </tbody>
         </table>
     @endif
+    @include('layouts.footer')
 </div>

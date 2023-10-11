@@ -56,7 +56,7 @@
         <div class="d-flex justify-content-between">
             {{ $users->render() }}
         </div>
-        
+        @include('layouts.footer')
     </div>
 
     <script>
