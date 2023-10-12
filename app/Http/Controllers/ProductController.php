@@ -4,68 +4,53 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
-
+use Illuminate\Support\Facades\View;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function all(Request $request)
-{
-    $search = $request->input('search');
+    {
+        $search = $request->input('search');
 
-    if ($search) {
-        // Search for products by name or ID
-        $products = Product::where('name', 'like', '%' . $search . '%')
-            ->orWhere('serial', $search)
-            ->paginate(10);
-    } else {
-        // Retrieve all products
-        $products = Product::paginate(10);
+        if ($search) {
+            // Search for products by name or ID
+            $products = Product::where('name', 'like', '%' . $search . '%')
+                ->orWhere('serial', $search)
+                ->paginate(10);
+        } else {
+            // Retrieve all products
+            $products = Product::paginate(10);
+        }
+
+        // Count all products
+        $productCount = Product::count();
+
+        // Share the product count variable with all views
+        View::share('productCount', $productCount);
+
+        return view('product.all', compact('products'));
     }
 
-    return view('product.all', compact('products'));
-}
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('product.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $product = Product::create([
-
-            'name' => $request ->name,
-            'id' => $request -> id,
+            'name' => $request->name,
+            'id' => $request->id,
             'serial' => rand(1000000, 9999999),
-            //'serial' => $request ->serial,
-            'price' => $request ->price,
-            'model' => $request ->model,
-            'status' => $request ->status,
-            'document' => $request ->document,
-            'SBU' => $request ->SBU,
-            'capacity' => $request ->capacity,
-            'description' => $request ->description,
-            'Purchase_Date' => $request ->Purchase_Date,
-            'P_WG' => $request ->P_WG,
-            
+            'price' => $request->price,
+            'model' => $request->model,
+            'status' => $request->status,
+            'document' => $request->document,
+            'SBU' => $request->SBU,
+            'capacity' => $request->capacity,
+            'description' => $request->description,
+            'Purchase_Date' => $request->Purchase_Date,
+            'P_WG' => $request->P_WG,
         ]);
 
         return redirect()->back()->with('success', 'Product successfully stored.');
@@ -138,63 +123,11 @@ class ProductController extends Controller
         ]);
     }
 
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-
         $product->delete();
 
         return redirect()->back()->with('success', 'Product successfully deleted.');
     }
-    // ... existing methods ...
-    // app/Http/Controllers/ProductController.php
-
-
-
-// ...
-
-// public function download()
-// {
-//     $products = Product::all(); // Fetch all products (adjust the model and query as needed)
-
-//     $csvFileName = 'products.csv';
-
-//     // Set the headers for CSV download
-//     $headers = array(
-//         "Content-type"        => "text/csv",
-//         "Content-Disposition" => "attachment; filename=$csvFileName",
-//         "Pragma"              => "no-cache",
-//         "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-//         "Expires"             => "0"
-//     );
-
-//     // Create a file handle
-//     $handle = fopen('php://output', 'w');
-
-//     // Add CSV headers
-//     fputcsv($handle, ['Product Name', 'Product Model', 'Product Serial Number', 'Purchase SBU', 'Product Status']);
-
-//     // Add product data
-//     foreach ($products as $product) {
-//         fputcsv($handle, [$product->name, $product->model, $product->serial, $product->SBU, $product->status]);
-//     }
-
-//     fclose($handle);
-
-//     // Return the response
-//     return Response::make('', 200, $headers);
-// }
-
-
-
-
-
 }

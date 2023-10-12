@@ -47,17 +47,7 @@
 </div>
 
 <script>
-  //  function goBack() {
-  //      window.history.back();
-   // }
 
-    //function downloadTable() {
-        // Logic for downloading the table, you can use a library like jsPDF or others
-        // Example using jsPDF:
-        //var doc = new jsPDF();
-        //doc.autoTable({ html: 'table' });
-        //doc.save('assigns_table.pdf');
-  //  }
 
     function printTable() {
         // Open the print dialog

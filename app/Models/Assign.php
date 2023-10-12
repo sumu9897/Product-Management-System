@@ -9,42 +9,41 @@ class Assign extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'product_serial',
+        'product_name',
+        'user_id',
+        'user_name',
+        'adate',
+        'status',
+        'rdate',
+    ];
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-  
     protected $guarded = [];
 
     protected $dates = ['created_at', 'updated_at'];
 
-    public function createdBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function createdBy()
     {
-        return $this->belongsTo('App\Models\User', 'created_by', 'id');
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
-    public function updatedBy(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function updatedBy()
     {
-        return $this->belongsTo('App\Models\User', 'updated_by', 'id');
+        return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'product_serial');
-        return $this->belongsTo(Product::class, 'product_name');
-    }
-    
-    public function products(){
-        return $this->belongsTo('App\Models\Product');
+        return $this->belongsTo(Product::class, 'product_serial', 'serial');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
-        return $this->belongsTo(User::class, 'user_name');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
-    
-   
 }

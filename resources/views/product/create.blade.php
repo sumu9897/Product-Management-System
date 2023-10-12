@@ -1,12 +1,12 @@
 @extends('admindashboard')
 
-<div class="content">
+<div class= "content">
     <div class="d-flex justify-content-between mb-4">
         <h3>Add Product</h3>
         <a class="btn btn-success btn-sm" href="{{ route('product.all') }}">List Products</a>
-        <a href="{{ url()->previous() }}">
+        <!--<a href="{{ url()->previous() }}">
             <i class="fa fa-arrow-circle-o-left"></i>
-            <span>Back</span>
+            <span>Back</span>-->
         </a>
     </div>
 

@@ -22,9 +22,9 @@ return new class extends Migration
             $table->date('rdate')->nullable();
             $table->timestamps();
 
-            // Foreign key constraints
+            //$Foreign key constraints
             //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-           // $table->foreign('product_serial')->references('serial')->on('products')->onDelete('cascade');
+            //$table->foreign('product_serial')->references('serial')->on('products')->onDelete('cascade');
         });
     }
 

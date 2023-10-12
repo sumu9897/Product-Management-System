@@ -50,20 +50,30 @@
 <script>
     function toggleReturningDate() {
         var statusSelect = document.getElementById("status");
+        var productSerialDropdown = document.getElementById("product_serial");
         var rdate = document.getElementById("returningDate");
 
-        if (statusSelect.value === "active") {
-            rdate.style.display = "none"; // Hide the input field
+        var selectedOption = productSerialDropdown.options[productSerialDropdown.selectedIndex];
+        var productStatus = selectedOption.getAttribute("data-status");
+
+        if (statusSelect.value === "active" && productStatus !== "inactive") {
+            rdate.style.display = "none"; // Hide the returning date field
         } else {
-            rdate.style.display = "block"; // Show the input field
+            rdate.style.display = "block"; // Show the returning date field
+
+            // If the product is inactive, reset the product serial dropdown
+            if (productStatus === "inactive") {
+                productSerialDropdown.value = ''; // Reset the dropdown
+            }
         }
     }
 </script>
+
 <script>
     const dropdown = document.getElementById('product_serial');
     const selectedOptions = new Set();
 
-    dropdown.addEventListener('change', function() {
+    dropdown.addEventListener('change', function () {
         const selectedOption = dropdown.value;
 
         if (selectedOptions.has(selectedOption)) {
@@ -100,7 +110,7 @@
             <select name="product_serial" id="product_serial" class="form-control" onchange="updateProductName()">
                 <option value="" disabled selected>Select Product</option>
                 @foreach($products as $row)
-                    <option value="{{ $row->serial }}">{{ $row->serial }} - {{ $row->name }}</option>
+                    <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
                 @endforeach
             </select>
             @if($errors->has('product_serial'))
@@ -108,20 +118,20 @@
             @endif
             <span id="product_name">Unknown Product</span>
         </div>
-        
+
         <script>
             function updateProductName() {
                 var selectElement = document.getElementById('product_serial');
                 var productNameElement = document.getElementById('product_name');
-        
+
                 // Get the selected option
                 var selectedOption = selectElement.options[selectElement.selectedIndex];
-        
+
                 // Update the span with the selected product's name
                 productNameElement.textContent = selectedOption.text;
             }
         </script>
-        
+
         <div class="form-group">
             <label for="user_id">Employee Name</label>
             <select name="user_id" id="user_id" onchange="updateUserName()" class="form-control">
@@ -135,21 +145,19 @@
             @endif
             <span id="user_name">Unknown User</span>
         </div>
-        
+
         <script>
             function updateUserName() {
                 var selectElement = document.getElementById('user_id');
                 var userNameElement = document.getElementById('user_name');
-        
+
                 // Get the selected option
                 var selectedOption = selectElement.options[selectElement.selectedIndex];
-        
+
                 // Update the span with the selected user's name
                 userNameElement.textContent = selectedOption.text;
             }
         </script>
-        
-        
 
         <div class="form-group">
             <label for="adate">Assign Date</label>

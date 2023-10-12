@@ -30,7 +30,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Routes that require authentication
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', [AuthController::class, 'dashboard']); 
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])-> name('dashboard'); 
+
 
     // User routes
     Route::get('/add', [UserController::class, 'create'])->name('user.create');

@@ -59,6 +59,12 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="content">
+    
+            <p>Total Products: {{ $productCount }}</p>
+        
+            <!-- Rest of your product.all view code -->
+        </div>
 
         <div class="d-flex justify-content-between">
             {{ $products->render() }}
