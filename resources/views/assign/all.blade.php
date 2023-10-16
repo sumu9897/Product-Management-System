@@ -4,9 +4,8 @@
     <div class="d-flex justify-content-between mb-4">
         <h3>Assigns List</h3>
         <a class="btn btn-success btn-sm" href="{{ route('assign.create') }}">Create New</a>
-        <!--<button onclick="goBack()">Go Back</button>
-       <button onclick="downloadTable()">Download</button>-->
-        <button onclick="printTable()">Print</button>
+
+            <button class="btn btn-primary btn-sm" onclick="downloadTable()">Download Table</button>
     </div>
 
     @if(session()->has('success'))
@@ -43,14 +42,20 @@
         </tbody>
     </table>
 
+    
+
     @include('layouts.footer')
 </div>
 
 <script>
-
-
-    function printTable() {
-        // Open the print dialog
-        window.print();
+    function downloadTable() {
+        var printWindow = window.open('', '_blank');
+        printWindow.document.write('<html><head><title>Assigns List</title></head><body>');
+        printWindow.document.write('<h3>Assigns List</h3>');
+        printWindow.document.write(document.querySelector('.table').outerHTML);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
     }
 </script>
+

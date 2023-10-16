@@ -52,7 +52,8 @@ class UserController extends Controller
 
 
             'name' => $request ->name,
-            'user_id' => rand(100000, 999999),
+            //'user_id' => rand(100000, 999999),   // if select randomly
+            'user_id' => $request ->user_id,
             'email' =>$request -> email,
             'password' => bcrypt($request->password),
             'department' =>$request ->department,

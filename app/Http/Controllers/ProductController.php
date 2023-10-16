@@ -41,7 +41,8 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $request->name,
             'id' => $request->id,
-            'serial' => rand(1000000, 9999999),
+            //'serial' => rand(1000000, 9999999),
+            'serial' => $request -> serial,
             'price' => $request->price,
             'model' => $request->model,
             'status' => $request->status,

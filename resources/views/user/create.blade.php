@@ -20,8 +20,13 @@
         @csrf
 
         <div class="form-group">
-            <label for="ename">Employee Name</label>
+            <label for="name">Employee Name</label>
             <input required="required" type="text" name="name" id="name" class="form-control" placeholder="Employee Name">
+        </div>
+
+        <div class="form-group">
+            <label for="user_id">Employee Id</label>
+            <input required="required" type="text" name="user_id" id="user_id" class="form-control" placeholder="Employee Id">
         </div>
 
         <div class="form-group">

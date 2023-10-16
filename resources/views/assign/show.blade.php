@@ -56,7 +56,6 @@
             
                 <input type="text" class="form-control" name="product_serial" value="{{ $assign->product_serial }}" disabled>
                 
-       
            
                 @if($errors->has('product_serial'))
                     <span class="error invalid-feedback"> {{ $errors->first('product_serial') }} </span>
@@ -74,7 +73,7 @@
        
 
         <label>Status</label>
-        <input  name="rdate" class="form-control" value="{{ $assign ->status}}" disabled>
+        <input  name="status" class="form-control" value="{{ $assign ->status}}" disabled>
         
     
 

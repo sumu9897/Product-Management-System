@@ -25,6 +25,11 @@
         </div>
 
         <div class="form-group">
+            <label for="serial">Product Serial</label>
+            <input required="required" type="text" name="serial" class="form-control" placeholder="Enter product Serial Number">
+        </div>
+
+        <div class="form-group">
             <label for="model">Product Model</label>
             <input required="required" type="text" name="model" class="form-control" placeholder="Enter product model">
         </div>
