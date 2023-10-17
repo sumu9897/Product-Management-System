@@ -18,6 +18,7 @@ class Assign extends Model
         'status',
         'rdate',
     ];
+
     /**
      * The attributes that are mass assignable.
      *

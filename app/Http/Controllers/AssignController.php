@@ -6,6 +6,7 @@ use App\Models\Assign;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AssignController extends Controller
@@ -37,7 +38,9 @@ class AssignController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Assign::create([
+        $user = Auth::user();
+
+        $assign = Assign::create([
             'product_serial' => $request->product_serial,
             'product_name' => $request->product_name,
             'user_id' => $request->user_id,
@@ -45,6 +48,8 @@ class AssignController extends Controller
             'adate' => $request->adate,
             'status' => $request->status,
             'rdate' => $request->rdate,
+            'created_by' => $user->id,
+            'created_at' => now(),
         ]);
 
         return redirect()->back()->with('success', 'Product Assigned successfully.');
@@ -81,6 +86,8 @@ class AssignController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $user = Auth::user();
+
         $assign->update([
             'product_serial' => $request->product_serial,
             'product_name' => $request->product_name,
@@ -89,6 +96,8 @@ class AssignController extends Controller
             'adate' => $request->adate,
             'status' => $request->status,
             'rdate' => $request->rdate,
+            'updated_by' => $user->id,
+            'updated_at' => now(),
         ]);
 
         return redirect()->back()->with('success', 'Updated successfully.');
@@ -106,7 +115,15 @@ class AssignController extends Controller
     public function destroy($id)
     {
         $assign = Assign::findOrFail($id);
+        $user = Auth::user();
+
+        $assign->update([
+            'deleted_by' => $user->id,
+            'deleted_at' => now(),
+        ]);
+
         $assign->delete();
+
         return redirect()->back()->with('success', 'Data deleted successfully.');
     }
 }

@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
             $table->unsignedTinyInteger('status')->default(1)->comment('0=Inactive,1=Active');
             $table->timestamp('created_at')->nullable();
            // $table->string('created_by');
-           $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamp('deleted_at')->nullable();
