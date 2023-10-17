@@ -1,91 +1,64 @@
 @extends('admindashboard')
-<script>
-    function toggleReturningDate() {
-        var statusSelect = document.getElementById("status");
-        var rdate = document.getElementById("returningDate");
 
-        if (statusSelect.value === "active") {
-            rdate.style.display = "none"; // Hide the input field
-        } else {
-            rdate.style.display = "block"; // Show the input field
-        }
+<style>
+    /* Add your custom styles here */
+    body {
+        background-color: #f8f9fa;
     }
-</script>
-<script>
-    const dropdown = document.getElementById('product_serial');
-    const selectedOptions = new Set();
 
-    dropdown.addEventListener('change', function() {
-        const selectedOption = dropdown.value;
+    .content {
+        margin: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        if (selectedOptions.has(selectedOption)) {
-            // Option has already been selected, reset the dropdown to a default value
-            dropdown.value = '';
-        } else {
-            // Add the selected option to the set
-            selectedOptions.add(selectedOption);
-        }
-    });
-</script>
+    h3 {
+        color: #007bff;
+    }
+
+    /* Add additional styles as needed for the show page */
+
+</style>
+
 <div class="content">
-
     <div class="d-flex justify-content-between mb-4">
-        <h3>Show Product</h3>
-        <button onclick="goBack()">Go Back</button>
-
-  <script>
-    function goBack() {
-      window.history.back();
-    }
-  </script>
-        
-
+        <h3>Assigned Product Details</h3>
+        <a href="{{ route('assign.all') }}" class="btn btn-secondary">Go Back</a>
     </div>
 
     @if(session()->has('success'))
-        <label class="alert alert-success w-100">{{session('success')}}</label>
+        <div class="alert alert-success">{{ session('success') }}</div>
     @elseif(session()->has('error'))
-        <label class="alert alert-danger w-100">{{session('error')}}</label>
+        <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 
-    <form action="{{ route('assign.all') }}" method="POST">
+    <div>
+        <h4>Assigned Product Information</h4>
+        <p><strong>Product Serial Number:</strong> {{ $assign->product_serial }}</p>
+        <p><strong>Product Name:</strong> {{ $assign->product_name }}</p>
+        <p><strong>Employee Name:</strong> {{ $assign->user_name }}</p>
+        <p><strong>Assign Date:</strong> {{ $assign->adate }}</p>
+        <p><strong>Status:</strong> {{ $assign->status }}</p>
+        @if($assign->status === 'inactive')
+            <p style="color: red;">This product is inactive.</p>
+        @endif
+        @if($assign->rdate)
+            <p><strong>Returning Date:</strong> {{ $assign->rdate }}</p>
+        @endif
+    </div>
 
-        @csrf
-        <div class="form-group">
-            <label>Product Serial Number</label>
+    <!-- Add additional sections for other information you want to display -->
+
+    <div class="mt-4">
+        <a href="{{ route('assign.edit', $assign->id) }}" class="btn btn-primary">Edit Assign</a>
+        <form action="{{ route('assign.delete', ['id' => $assign->id]) }}" method="POST" class="d-inline-block">
+            @csrf
             
-                <input type="text" class="form-control" name="product_serial" value="{{ $assign->product_serial }}" disabled>
-                
-           
-                @if($errors->has('product_serial'))
-                    <span class="error invalid-feedback"> {{ $errors->first('product_serial') }} </span>
-                @endif
-        </div>
-        <div class="form-group">
-            <label>Employee Id</label>
-            <input  name="user_id" class="form-control" value="{{ $assign->user_id }}" disabled>
-        </div>
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+    </div>
 
-        <div class="form-group">
-            <label>Assign Date</label>
-            <input  name="adate" class="form-control" value="{{ $assign->adate }}" disabled>
-        </div>
-       
-
-        <label>Status</label>
-        <input  name="status" class="form-control" value="{{ $assign ->status}}" disabled>
-        
-    
-
-        
-        <div  >
-            <label for="rdate">Returning Date</label>
-            <input  name="rdate" class="form-control" value="{{ $assign->rdate }}" disabled>
-        </div><br><br>
-
-        <button type="submit" class="btn btn-primary">Assign Product</button>
-    </form>
     @include('layouts.footer')
 </div>
-
-

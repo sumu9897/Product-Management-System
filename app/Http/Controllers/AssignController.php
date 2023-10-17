@@ -68,7 +68,6 @@ class AssignController extends Controller
         $assignedProducts = Assign::pluck('product_serial')->toArray();
         $products = Product::whereNotIn('serial', $assignedProducts)->get();
         return view('assign.edit', compact('employees', 'products','assign'));
-        //return view('assign.edit', compact());
     }
 
     public function update(Request $request, $id)

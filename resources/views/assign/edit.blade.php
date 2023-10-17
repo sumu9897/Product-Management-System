@@ -84,7 +84,7 @@
 
 <div class="content">
     <div class="d-flex justify-content-between mb-4">
-        <h3>Edit Assignment</h3>
+        <h3>Edit Assign</h3>
         <button onclick="goBack()" class="btn btn-secondary">Go Back</button>
         <script>
             function goBack() {
@@ -161,7 +161,7 @@
             <input name="rdate" type="date" id="rdate" class="form-control" value="{{ $assign->rdate }}">
         </div><br><br>
 
-        <button type="submit" class="btn btn-primary">Update Assignment</button>
+        <button type="submit" class="btn btn-primary">Update Assign</button>
     </form>
 
     @include('layouts.footer')

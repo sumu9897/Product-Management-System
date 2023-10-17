@@ -18,7 +18,7 @@
                         <p class="lead">You are logged in.</p>
 
                         <div class="content">
-                            <p>Total Products: {{ '#' }}</p>
+                            <p>Total Products: {{ App\Models\Product::count() }}</p>
                             <!-- Other dashboard content goes here -->
                         </div>
 
