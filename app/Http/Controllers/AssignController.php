@@ -67,7 +67,7 @@ class AssignController extends Controller
         $employees = User::all();
         $assignedProducts = Assign::pluck('product_serial')->toArray();
         $products = Product::whereNotIn('serial', $assignedProducts)->get();
-        return view('assign.edit', compact('employees', 'products','assign'));
+        return view('assign.edit', compact('employees', 'products', 'assign'));
     }
 
     public function update(Request $request, $id)
@@ -124,5 +124,21 @@ class AssignController extends Controller
         $assign->delete();
 
         return redirect()->back()->with('success', 'Data deleted successfully.');
+    }
+
+    // Retrieve all assigns and count them
+    public function index()
+    {
+        // Retrieve all assigns
+        $assigns = Assign::paginate(10);
+
+        // Count all assigns
+        $assignCount = Assign::count();
+
+        // Count active products
+        $activeProductCount = Assign::where('status', 'active')->count();
+
+        // Pass assigns, the count, and active product count to the view
+        return view('assign.index', compact('assigns', 'assignCount', 'activeProductCount'));
     }
 }

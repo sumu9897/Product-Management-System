@@ -38,6 +38,26 @@
                                 </div>
                             </div>
                         </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="card widget-flat text-bg-info">
+                                        <div class="card-body">
+                                            <h6 class="text-uppercase mt-0" title="Customers">Total Assign Products</h6>
+                                            <h2 class="my-2">{{ App\Models\Assign::count() }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col-6">
+                                    <div class="card widget-flat text-bg-info">
+                                        <div class="card-body">
+                                            <h6 class="text-uppercase mt-0" title="Customers">Total Active Product</h6>
+                                            <h2 class="my-2">{{ App\Models\Assign::where('status', 'active')->count() }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
