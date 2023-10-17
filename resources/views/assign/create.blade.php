@@ -51,7 +51,6 @@
         color: red;
     }
 </style>
-
 <script>
     function toggleReturningDate() {
         var statusSelect = document.getElementById("status");
@@ -80,19 +79,13 @@
 </script>
 
 <script>
-    const dropdown = document.getElementById('product_serial');
-    const selectedOptions = new Set();
+    function toggleAssignProductButton() {
+        var statusSelect = document.getElementById("status");
+        var assignProductButton = document.getElementById("assignProductButton");
 
-    dropdown.addEventListener('change', function () {
-        const selectedOption = dropdown.value;
-
-        if (selectedOptions.has(selectedOption)) {
-            // Option has already been selected, do not reset the dropdown
-        } else {
-            // Add the selected option to the set
-            selectedOptions.add(selectedOption);
-        }
-    });
+        // Check if the product status is "stock"
+        assignProductButton.style.display = (statusSelect.value === "stock") ? "block" : "none";
+    }
 </script>
 
 <div class="content">
@@ -120,11 +113,13 @@
     <form action="{{ route('assign.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="product_serial">Product Serial Number</label>
+            <label for="product_serial"> Available Product Serial Number</label>
             <select name="product_serial" id="product_serial" class="form-control" onchange="updateProductName()">
                 <option value="" disabled selected>Select Product</option>
                 @foreach($products as $row)
-                    <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
+                    @if ($row->status == 'stock')
+                        <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
+                    @endif
                 @endforeach
             </select>
             @if($errors->has('product_serial'))
@@ -198,6 +193,9 @@
         </div><br><br>
 
         <button type="submit" class="btn btn-primary">Assign Product</button>
+
+        <!-- Show the Assign Product button only for stock products -->
+        <button type="submit" class="btn btn-primary" id="assignProductButton" style="display: none;">Assign Product</button>
 
         <!-- Add hidden fields for product_name and user_name -->
         <input type="hidden" name="product_name" id="hidden_product_name" value="">
