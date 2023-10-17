@@ -49,20 +49,24 @@
             <label>Purchase Date</label>
             <input type="date" name="Purchase_Date" required="required" value="{{ $product->Purchase_Date }}">
         </div>
+
         <div class="form-group">
-            <label>Purchase SBU</label>
-            <select required="required" name="SBU" class="form-control" id="purchaseSBU">
-                <option value="" disabled selected>Select Purchase SBU</option>
-                <option value="JMI Group">JMI Group</option>
-                <option value="JMIBL">JMIBL</option>
-                <option value="JHL">JHL</option>
-                <option value="JMEL">JMEL</option>
-                <option value="JFL">JFL</option>
-                <option value="JGL">JGL</option>
-                <option value="JSL">JSL</option>
+            <label for="SBU">Purchase SBU</label>
+            <select required="required" name="SBU" class="form-control">
+                <option value="" disabled>Select Purchase SBU</option>
+                <option value="JMI Group" {{ $product->SBU == 'JMI Group' ? 'selected' : '' }}>JMI Group</option>
+                <option value="JMIBL" {{ $product->SBU == 'JMIBL' ? 'selected' : '' }}>JMIBL</option>
+                <option value="JHL" {{ $product->SBU == 'JHL' ? 'selected' : '' }}>JHL</option>
+                <option value="JMEL" {{ $product->SBU == 'JMEL' ? 'selected' : '' }}>JMEL</option>
+                <option value="JFL" {{ $product->SBU == 'JFL' ? 'selected' : '' }}>JFL</option>
+                <option value="JGL" {{ $product->SBU == 'JGL' ? 'selected' : '' }}>JGL</option>
+                <option value="JSL" {{ $product->SBU == 'JSL' ? 'selected' : '' }}>JSL</option>
             </select>
-            
         </div>
+        
+
+
+
         <script>
             document.getElementById('purchaseSBU').addEventListener('change', function () {
                 var selectedValue = this.value;

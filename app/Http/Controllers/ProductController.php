@@ -96,7 +96,7 @@ class ProductController extends Controller
 
         $product->update([
             'name' => $request ->name,
-            'serial' => $request ->serial,
+            //'serial' => $request ->serial,
             //'serial' => rand(1000000, 9999999),
             'price' => $request ->price,
             'model' => $request ->model,
