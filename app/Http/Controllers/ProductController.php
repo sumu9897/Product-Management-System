@@ -25,8 +25,12 @@ class ProductController extends Controller
         // Count all products
         $productCount = Product::count();
 
-        // Share the product count variable with all views
-        View::share('productCount', $productCount);
+    // Count products with status 'disable'
+    $disabledProductCount = Product::where('status', 'disable')->count();
+
+    // Share the product count variables with all views
+    View::share('productCount', $productCount);
+    View::share('disabledProductCount', $disabledProductCount);
 
         return view('product.all', compact('products'));
     }

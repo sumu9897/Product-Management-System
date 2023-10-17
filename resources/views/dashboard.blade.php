@@ -19,18 +19,25 @@
                         <h4 class="mb-4">Greetings, {{ Auth::user()->name }}!</h4>
                         <p class="lead">You are logged in.</p>
 
-    
-                        <div class="col-xxl-3 col-sm-6">
-                            <div class="card widget-flat text-bg-info">
-                                <div class="card-body">
-                                   
-                                    <h6 class="text-uppercase mt-0" title="Customers">Total Products</h6>
-                                    <h2 class="my-2">{{ App\Models\Product::count() }}</h2>
-                                    
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card widget-flat text-bg-info">
+                                    <div class="card-body">
+                                        <h6 class="text-uppercase mt-0" title="Customers">Total Products</h6>
+                                        <h2 class="my-2">{{ App\Models\Product::count() }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="card widget-flat text-bg-info">
+                                    <div class="card-body">
+                                        <h6 class="text-uppercase mt-0" title="Customers">Disable Product</h6>
+                                        <h2 class="my-2">{{ App\Models\Product::where('status', 'disable')->count() }}</h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
