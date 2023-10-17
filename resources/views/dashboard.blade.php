@@ -19,9 +19,16 @@
                         <h4 class="mb-4">Greetings, {{ Auth::user()->name }}!</h4>
                         <p class="lead">You are logged in.</p>
 
-                        <div class="content mt-4">
-                            <p class="h6">Total Products: <span class="badge badge-pill badge-info">{{ App\Models\Product::count() }}</span></p>
-                            <!-- Other dashboard content goes here -->
+    
+                        <div class="col-xxl-3 col-sm-6">
+                            <div class="card widget-flat text-bg-info">
+                                <div class="card-body">
+                                   
+                                    <h6 class="text-uppercase mt-0" title="Customers">Total Products</h6>
+                                    <h2 class="my-2">{{ App\Models\Product::count() }}</h2>
+                                    
+                                </div>
+                            </div>
                         </div>
 
                     </div>
