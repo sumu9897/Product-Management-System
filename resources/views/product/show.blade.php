@@ -105,6 +105,11 @@
             <input class="custom-control-input" value="stock" type="radio" id="customRadio2" name="status" @if($product->status == 'stock') checked="checked"  @endif  disabled>
             <label for="customRadio2" class="custom-control-label">In Stock</label>
         </div>
+        <div class="custom-control custom-radio">
+            <input class="custom-control-input" value="disable" type="radio" id="customRadio3" name="status" @if($product->status == 'disable') checked="checked"  @endif  disabled>
+            <label for="customRadio3" class="custom-control-label">Disable</label>
+        </div>
+
 
         @if($errors->has('status'))
             <span class="error invalid-feedback">{!! $errors->first('status') !!}</span>

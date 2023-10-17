@@ -76,8 +76,11 @@
 
         <div class="form-group">
             <label>Product Status</label><br>
-            <label><input type="radio" name="status" value="active"> Active</label><br>
-            <label><input type="radio" name="status" value="stock"> In Stock</label>
+            <div class="radio-group">
+                <label><input type="radio" name="status" value="active"> Active</label>
+                <label><input type="radio" name="status" value="stock"> In Stock</label>
+                <label><input type="radio" name="status" value="disable"> Disable</label>
+            </div>
         </div>
 
         <div class="form-group">
