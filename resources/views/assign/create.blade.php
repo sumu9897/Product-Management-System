@@ -116,17 +116,25 @@
             <label for="product_serial"> Available Product Serial Number</label>
             <select name="product_serial" id="product_serial" class="form-control" onchange="updateProductName()">
                 <option value="" disabled selected>Select Product</option>
-                {{-- @foreach($products as $row)
+                @foreach($products as $row)
                     @if ($row->status == 'stock')
                         <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
                     @endif
-                @endforeach --}}
+                @endforeach
 
-                    @foreach($products as $row)
+                    {{-- @foreach($products as $row)
                         @if ($row->status == 'stock' || $row->status == 'inactive')
-                            <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
+                            @foreach($inactiveAssigns as $inactiveAssign)
+                            <!-- Display information about the inactive assignment -->
+                                <p>{{ $inactiveAssign->product_serial }} - {{ $inactiveAssign->status }}</p>
+                                <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
+                            @endforeach
+                            
                         @endif
-                    @endforeach
+                    @endforeach --}}
+
+                    
+
 
             </select>
             @if($errors->has('product_serial'))

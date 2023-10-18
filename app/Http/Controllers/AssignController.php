@@ -17,13 +17,38 @@ class AssignController extends Controller
         return view('assign.all', compact('assigns'));
     }
 
+    public function history()
+    {
+        $assigns = Assign::paginate(10);
+        return view('assign.history', compact('assigns'));
+    }
+
     public function create()
     {
         $employees = User::all();
         $assignedProducts = Assign::pluck('product_serial')->toArray();
         $products = Product::whereNotIn('serial', $assignedProducts)->get();
+       // $assigns = Assign::where('status', 'inactive')->get();
         return view('assign.create', compact('employees', 'products'));
     }
+
+    
+
+    // public function create()
+    // {
+    //     $employees = User::all();
+    //     $assignedProducts = Assign::pluck('product_serial')->toArray();
+
+    //     // Fetch inactive assignments
+    //     $inactiveAssigns = Assign::where('status', 'inactive')->get();
+
+    //     // Fetch products that are not assigned (active or inactive)
+    //     $products = Product::whereNotIn('serial', $assignedProducts)->get();
+
+    //     return view('assign.create', compact('employees', 'products', 'inactiveAssigns'));
+    // }
+
+
 
     public function store(Request $request)
     {
@@ -111,6 +136,12 @@ class AssignController extends Controller
         return view('product.search', compact('products'));
     }
 
+  
+
+    // Rest of your model code...
+
+    protected $dates = ['deleted_at'];
+    
     public function destroy($id)
     {
         $assign = Assign::findOrFail($id);
@@ -125,6 +156,13 @@ class AssignController extends Controller
 
         return redirect()->back()->with('success', 'Data deleted successfully.');
     }
+
+
+
+
+
+
+
 
     // Retrieve all assigns and count them
     public function index()

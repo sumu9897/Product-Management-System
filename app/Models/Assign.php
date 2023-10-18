@@ -19,6 +19,8 @@ class Assign extends Model
         'rdate',
     ];
 
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,7 +28,7 @@ class Assign extends Model
      */
     protected $guarded = [];
 
-    protected $dates = ['created_at', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function createdBy()
     {
@@ -36,6 +38,11 @@ class Assign extends Model
     public function updatedBy()
     {
         return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    public function deletedBy()
+    {
+        return $this->belongsTo(User::class, 'deleted_by', 'id');
     }
 
     public function product()

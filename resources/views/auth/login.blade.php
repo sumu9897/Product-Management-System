@@ -9,7 +9,7 @@
           <div class="card-header">Login</div>
           <div class="card-body">
 
-            <form action="{{ route('login.post') }}" method="POST">
+            <form action="{{ route('login.post') }}" method="POST" onsubmit="return validateForm()">
               @csrf
               <div class="form-group row">
                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
@@ -53,4 +53,17 @@
     </div>
   </div>
 </main>
+
+<script>
+  function validateForm() {
+    // Add your validation logic here
+    // For example, check if there are any error messages displayed
+    if (document.querySelectorAll('.text-danger').length > 0) {
+      alert('Invalid email or password. Please check your credentials.');
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+</script>
+
 @endsection

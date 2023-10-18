@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Assign routes
     Route::get('/assign/allassign', [AssignController::class, 'all'])->name('assign.all');
+    Route::get('/assign/history', [AssignController::class, 'history'])->name('assign.history');
     Route::get('/assign/create', [AssignController::class, 'create'])->name('assign.create');
     Route::post('/assign/store', [AssignController::class, 'store'])->name('assign.store');
     Route::post('/assign/available', [AssignController::class, 'available'])->name('assign.available');
