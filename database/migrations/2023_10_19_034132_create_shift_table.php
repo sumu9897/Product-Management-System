@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('shift', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();  // Add 'name' column
-            $table->string('serial')->nullable();  // Add 'serial' column
+            $table->string('product_name')->nullable();  // Add 'name' column
+            $table->string('product_serial')->nullable();  // Add 'serial' column
             $table->string('SBU')->nullable();  // Add 'sbu' column
             $table->string('Now_SBU')->nullable();  // Add 'Now_SBU' column
             $table->date('Shift_Date')->nullable();  // Add 'Shift_Date' column

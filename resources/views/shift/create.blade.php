@@ -14,7 +14,7 @@
     <form action="{{ route('shift.store') }}" method="POST">
         @csrf
 
-        {{-- <div class="form-group">
+        <div class="form-group">
             <label for="product_serial">Product Serial Number</label>
             <select name="product_serial" id="product_serial" class="form-control">
                 <option>select</option>
@@ -25,17 +25,17 @@
             @if($errors->has('product_serial'))
                 <div class="error invalid-feedback">{{ $errors->first('product_serial') }}</div>
             @endif
-        </div> --}}
+        </div>
 
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" name="name" class="form-control" required>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="serial">Serial:</label>
             <input type="text" name="serial" class="form-control" required>
-        </div>
+        </div> --}}
 
         <div class="form-group">
             <label for="sbu">SBU:</label>
@@ -44,7 +44,16 @@
 
         <div class="form-group">
             <label for="Now_SBU">Now SBU:</label>
-            <input type="text" name="Now_SBU" class="form-control" required>
+            <select required="required" name="Now_SBU" class="form-control">
+                <option value="" disabled selected>Select SBU</option>
+                <option value="JMI Group">JMI Group</option>
+                <option value="JMIBL">JMIBL</option>
+                <option value="JHL">JHL</option>
+                <option value="JMEL">JMEL</option>
+                <option value="JFL">JFL</option>
+                <option value="JGL">JGL</option>
+                <option value="JSL">JSL</option>
+            </select>
         </div>
 
         <div class="form-group">
@@ -52,14 +61,8 @@
             <input type="date" name="Shift_Date" class="form-control" required>
         </div>
 
-        <div class="form-group">
-            <label for="Shift_by">Shift by:</label>
-            <input type="text" name="Shift_by" class="form-control" required>
-        </div>
-
-
-        
 
         <button type="submit" class="btn btn-primary">Shift Product</button>
     </form>
+    @include('layouts.footer')
 </div>

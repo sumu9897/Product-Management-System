@@ -41,8 +41,8 @@ class ShiftController extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
-            'name' => 'nullable|string',
-            'serial' => 'nullable|string',
+            'product_name' => 'nullable|string',
+            'product_serial' => 'nullable|string',
             'SBU' => 'nullable|string',
             'Now_SBU' => 'nullable|string',
             'Shift_Date' => 'nullable|date',
