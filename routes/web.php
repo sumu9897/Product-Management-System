@@ -65,4 +65,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/assign/edit/{id}', [AssignController::class, 'edit'])->name('assign.edit');
     Route::post('/assign/update/{id}', [AssignController::class, 'update'])->name('assign.update');
     Route::post('/assign/delete/{id}', [AssignController::class, 'destroy'])->name('assign.delete');
+
+
+    // Shift routes
+    Route::get('/shift/create', [ShiftController::class, 'create'])->name('shift.create');
+    Route::post('/shift/store', [ShifttController::class, 'store'])->name('shift.store');
+    Route::get('/shift/allproduct', [ShiftController::class, 'all'])->name('shift.all');
+    Route::get('/shift/show/{id}', [ShiftController::class, 'show'])->name('shift.show');
+    Route::get('/shift/edit/{id}', [ShifttController::class, 'edit'])->name('shift.edit');
+    Route::post('/shift/update/{id}', [ShiftController::class, 'update'])->name('shift.update');
 });

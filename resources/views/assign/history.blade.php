@@ -15,7 +15,7 @@
 
     <table class="table table-striped">
         <thead style="text-align: center">
-            <th>Assign Product Id</th>
+            <th>Product Id and Name</th>
             <th>Employee ID</th>
             <th>Assign Date</th>
             <th>Status</th>
@@ -24,7 +24,7 @@
         <tbody>
             @foreach($assigns as $assign)
                 <tr style="text-align: center">
-                    <td>{{ $assign->product_serial }}</td>
+                    <td>{{ $assign->product_name }}</td>
                     <td>{{ $assign->user_id }}</td>
                     <td>{{ $assign->adate }}</td>
                     <td>{{ $assign->status }}</td>
