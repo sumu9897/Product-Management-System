@@ -93,6 +93,7 @@
             <a href="{{route('user.all')}}" class="{{ Request::is('user/all') ? 'active' : '' }}">Employee Details</a>
             <a href="{{route('assign.create')}}" class="{{ Request::is('assign/create') ? 'active' : '' }}">Assign Product</a>
             <a href="{{route('assign.all')}}" class="{{ Request::is('assign/all') ? 'active' : '' }}">Assigned All product</a>
+            <a href="{{route('shift.create')}}" class="{{ Request::is('shift/create') ? 'active' : '' }}">Shift Product</a>
             <a href="{{route('assign.history')}}" class="{{ Request::is('history') ? 'active' : '' }}">History</a>
 
             <!-- Logout Link -->
