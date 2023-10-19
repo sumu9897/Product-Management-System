@@ -10,8 +10,8 @@ class Shift extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'serial',
+        'product_name',
+        'product_serial',
         'Now_SBU',
         'Shift_Date',
         'Shift_by',

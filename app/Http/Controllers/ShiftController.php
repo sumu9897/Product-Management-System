@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Models\Shift; // Make sure to import your Shift model
 
 class ShiftController extends Controller

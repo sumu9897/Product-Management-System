@@ -15,17 +15,52 @@
         @csrf
 
         <div class="form-group">
-            <label for="product_serial">Product Serial Number</label>
-            <select name="product_serial" id="product_serial" class="form-control">
-                <option>select</option>
-                @foreach($products as $product)
-                    <option value="{{ $product->serial }}">{{ $product->serial }}</option>
+            <label for="product_serial"> Available Product Serial Number</label>
+            <select name="product_serial" id="product_serial" class="form-control" onchange="updateProductName()">
+                <option value="" disabled selected>Select Product</option>
+                @foreach($products as $row)
+                    @if ($row->status == 'stock')
+                        <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
+                    @endif
                 @endforeach
+
+                    {{-- @foreach($products as $row)
+                        @if ($row->status == 'stock' || $row->status == 'inactive')
+                            @foreach($inactiveAssigns as $inactiveAssign)
+                            <!-- Display information about the inactive assignment -->
+                                <p>{{ $inactiveAssign->product_serial }} - {{ $inactiveAssign->status }}</p>
+                                <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
+                            @endforeach
+                            
+                        @endif
+                    @endforeach --}}
+
+                    
+
+
             </select>
             @if($errors->has('product_serial'))
                 <div class="error invalid-feedback">{{ $errors->first('product_serial') }}</div>
             @endif
+            <span id="product_name">Unknown Product</span>
         </div>
+
+        <script>
+            function updateProductName() {
+                var selectElement = document.getElementById('product_serial');
+                var productNameElement = document.getElementById('product_name');
+                var hiddenProductNameElement = document.getElementById('hidden_product_name');
+  
+                // Get the selected option
+                var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+                // Update the span with the selected product's name
+                productNameElement.textContent = selectedOption.text;
+
+                // Set the value in the hidden input field
+                hiddenProductNameElement.value = selectedOption.text;
+            }
+        </script>
 
         <div class="form-group">
             <label for="name">Name:</label>
