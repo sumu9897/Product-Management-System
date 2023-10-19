@@ -14,7 +14,7 @@
     <form action="{{ route('shift.store') }}" method="POST">
         @csrf
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="product_serial">Product Serial Number</label>
             <select name="product_serial" id="product_serial" class="form-control">
                 <option>select</option>
@@ -25,6 +25,36 @@
             @if($errors->has('product_serial'))
                 <div class="error invalid-feedback">{{ $errors->first('product_serial') }}</div>
             @endif
+        </div> --}}
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="serial">Serial:</label>
+            <input type="text" name="serial" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="sbu">SBU:</label>
+            <input type="text" name="sbu" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Now_SBU">Now SBU:</label>
+            <input type="text" name="Now_SBU" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Shift_Date">Shift Date:</label>
+            <input type="date" name="Shift_Date" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Shift_by">Shift by:</label>
+            <input type="text" name="Shift_by" class="form-control" required>
         </div>
 
 

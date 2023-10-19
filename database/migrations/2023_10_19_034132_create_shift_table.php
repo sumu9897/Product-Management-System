@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();  // Add 'name' column
             $table->string('serial')->nullable();  // Add 'serial' column
-            $table->date('purchase')->nullable();  // Add 'purchase' column
-            $table->string('sbu')->nullable();  // Add 'sbu' column
+            $table->string('SBU')->nullable();  // Add 'sbu' column
             $table->string('Now_SBU')->nullable();  // Add 'Now_SBU' column
             $table->date('Shift_Date')->nullable();  // Add 'Shift_Date' column
             $table->string('Shift_by')->nullable();  // Add 'Shift_by' column
