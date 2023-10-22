@@ -23,7 +23,8 @@ class ShiftController extends Controller
         $shifts = Shift::all();
 
         // You can return the shifts to a view or format it as needed
-        return view('shift.all', ['shift' => $shifts]);
+       // return view('shift.all', ['shift' => $shifts]);
+        return view('shift.all', compact('shifts'));
     }
 
     /**

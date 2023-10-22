@@ -2,8 +2,8 @@
 <div class="content">
 
     <div class="d-flex justify-content-between mb-4">
-        <h3>Assigns List</h3>
-        <a class="btn btn-success btn-sm" href="{{ route('assign.create') }}">Create New</a>
+        <h3>Shift List</h3>
+        <a class="btn btn-success btn-sm" href="{{ route('shift.create') }}">Create New</a>
         <button class="btn btn-primary btn-sm" onclick="downloadTable()">Download Table</button>
     </div>
 
@@ -31,10 +31,10 @@
                     <td>
                         <a href="{{ route('shift.edit', ['id' => $shift->id]) }}" class="btn btn-success btn-sm">Edit</a>
                         <a href="{{ route('shift.show', ['id' => $shift->id]) }}" class="btn btn-info btn-sm">Show</a>
-                        <form action="{{ route('shift.delete', ['id' => $shift->id]) }}" method="POST" class="d-inline-block">
+                        {{-- <form action="{{ route('shift.delete', ['id' => $shift->id]) }}" method="POST" class="d-inline-block">
                             @csrf
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
               
