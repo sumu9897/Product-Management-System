@@ -33,12 +33,12 @@
 
         <div class="form-group">
             <label for="product_name">Product Name:</label>
-            <span id="product_name">Unknown Product</span>
+            <span name="product_name" id="product_name">Unknown Product</span>
         </div>
 
         <div class="form-group">
             <label for="product_sbu">Product SBU:</label>
-            <span id="product_sbu">Unknown SBU</span>
+            <span name="SBU" id="product_sbu">Unknown SBU</span>
         </div>
 
         <div class="form-group">
