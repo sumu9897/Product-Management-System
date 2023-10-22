@@ -20,7 +20,7 @@
                 <option value="" disabled selected>Select Product</option>
                 @foreach($products as $row)
                     @if ($row->status == 'stock')
-                        <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }}</option>
+                        <option value="{{ $row->serial }}" data-status="{{ $row->status }}">{{ $row->serial }} - {{ $row->name }} - {{ $row->SBU }}</option>
                     @endif
                 @endforeach
 
@@ -62,20 +62,20 @@
             }
         </script>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" name="name" class="form-control" required>
-        </div>
+        </div> --}}
 
         {{-- <div class="form-group">
             <label for="serial">Serial:</label>
             <input type="text" name="serial" class="form-control" required>
         </div> --}}
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="sbu">SBU:</label>
-            <input type="text" name="sbu" class="form-control" required>
-        </div>
+            <input type="text" name="SBU" class="form-control" value="{{ $product->SBU }}" disabled>
+        </div> --}}
 
         <div class="form-group">
             <label for="Now_SBU">Now SBU:</label>

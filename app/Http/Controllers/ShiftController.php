@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Shift; // Make sure to import your Shift model
 
+use Illuminate\Foundation\Bootstrap\HandleException;
+
 class ShiftController extends Controller
 {
     /**
@@ -13,12 +15,15 @@ class ShiftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+    public function all()
     {
+        $shifts = Shift::paginate(10);
         $shifts = Shift::all();
 
         // You can return the shifts to a view or format it as needed
-        return view('shift.index', ['shift' => $shifts]);
+        return view('shift.all', ['shift' => $shifts]);
     }
 
     /**
@@ -28,9 +33,20 @@ class ShiftController extends Controller
      */
     public function create()
     {
-        // You can create a form to add new shifts
-        return view('shift.create');
-    }
+        $shiftProducts = Shift::pluck('product_serial')->toArray();
+        $products = Product::whereNotIn('serial', $shiftProducts)->get();
+
+        $shiftProducts = Shift::pluck('SBU')->toArray();
+        $products = Product::whereNotIn('SBU', $shiftProducts)->get();
+
+       
+
+
+    //return view('all.blade.view', ['products' => $products]);
+    return view('shift.create', compact('products'));
+    return view('shift.create');
+}
+
 
     /**
      * Store a newly created resource in storage.
@@ -54,7 +70,7 @@ class ShiftController extends Controller
         $shift = Shift::create($validatedData);
 
         // You can redirect the user to a specific page or return a response
-        return redirect()->route('shift.index')->with('success', 'Shift created successfully!');
+        return redirect()->route('shift.all')->with('success', 'Shift created successfully!');
     }
 
     // Other controller methods (update, edit, destroy) can be added as needed

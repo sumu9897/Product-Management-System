@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shift', function (Blueprint $table) {
+        Schema::create('shifts', function (Blueprint $table) {
             $table->id();
             $table->string('product_name')->nullable();  // Add 'name' column
             $table->string('product_serial')->nullable();  // Add 'serial' column
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shift');
+        Schema::dropIfExists('shifts');
     }
 };

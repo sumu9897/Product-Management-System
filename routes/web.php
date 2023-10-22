@@ -70,9 +70,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Shift routes
     Route::get('/shift/create', [ShiftController::class, 'create'])->name('shift.create');
-    Route::post('/shift/store', [ShifttController::class, 'store'])->name('shift.store');
+    Route::post('/shift/store', [ShiftController::class, 'store'])->name('shift.store');
     Route::get('/shift/allproduct', [ShiftController::class, 'all'])->name('shift.all');
     Route::get('/shift/show/{id}', [ShiftController::class, 'show'])->name('shift.show');
-    Route::get('/shift/edit/{id}', [ShifttController::class, 'edit'])->name('shift.edit');
+    Route::get('/shift/edit/{id}', [ShiftController::class, 'edit'])->name('shift.edit');
     Route::post('/shift/update/{id}', [ShiftController::class, 'update'])->name('shift.update');
 });
