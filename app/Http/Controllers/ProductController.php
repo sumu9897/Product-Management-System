@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Product; // Import the Product model
+use App\Models\Assign;
+
 use Illuminate\Support\Facades\View;
 
 class ProductController extends Controller
@@ -33,6 +34,7 @@ class ProductController extends Controller
     View::share('disabledProductCount', $disabledProductCount);
 
         return view('product.all', compact('products'));
+    
     }
 
     public function create()
@@ -42,15 +44,27 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'serial' => 'required|unique:products,serial', // Validate uniqueness of serial
+            'price' => 'required|numeric|min:0', // Example rule for price (numeric and greater than or equal to 0)
+            'model' => 'required',
+            'status' => 'required|in:active,stock,disable', // Example rule for status (must be one of these values)
+            //'document' => 'file', // Example rule for document (file upload)
+            'SBU' => 'required|in:JMI Group,JMIBL,JHL,JMEL,JFL,JGL,JSL', // Example rule for SBU (must be one of these values)
+            'capacity' => 'required',
+            'description' => 'required',
+            'Purchase_Date' => 'required|date',
+            'P_WG' => 'required',
+        ]);
+
         $product = Product::create([
             'name' => $request->name,
-            'id' => $request->id,
-            //'serial' => rand(1000000, 9999999),
-            'serial' => $request -> serial,
+            'serial' => $request->serial,
             'price' => $request->price,
             'model' => $request->model,
             'status' => $request->status,
-            'document' => $request->document,
+            'document' => $request->file('document')->store('documents'), // Store the uploaded file
             'SBU' => $request->SBU,
             'capacity' => $request->capacity,
             'description' => $request->description,
@@ -60,6 +74,10 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Product successfully stored.');
     }
+
+
+
+   
 
     /**
      * Display the specified resource.
@@ -118,7 +136,7 @@ class ProductController extends Controller
 
     public function view()
     {
-        $product = Products::with('assign')->get(); 
+        $product = Product::with('assign')->get(); 
         $assign = Assign::with('products')->get();
         return view ('product.view')-> with([
             'products' => $product,

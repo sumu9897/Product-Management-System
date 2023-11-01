@@ -26,13 +26,17 @@
 
         <div class="form-group">
             <label for="serial">Product Serial</label>
-            <input required="required" type="text" name="serial" class="form-control" placeholder="Enter product Serial Number">
+            <input required="required" type="text" name="serial" id="serial" class="form-control" placeholder="Enter product Serial Number">
+            <p id="error-message" style="color: red;">@error('serial'){{ $message }}@enderror</p>
         </div>
+        
+        
 
         <div class="form-group">
             <label for="model">Product Model</label>
             <input required="required" type="text" name="model" class="form-control" placeholder="Enter product model">
         </div>
+
 
         <div class="form-group">
             <label for="capacity">Product Capacity</label>
@@ -73,7 +77,6 @@
             </select>
         </div>
         
-
         <div class="form-group">
             <label>Product Status</label><br>
             <div class="radio-group">
@@ -92,3 +95,7 @@
     </form>
     @include('layouts.footer')
 </div>
+
+
+
+

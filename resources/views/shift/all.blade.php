@@ -1,4 +1,5 @@
-@extends('admindashboard')
+@extends('admindashboard') 
+
 <div class="content">
 
     <div class="d-flex justify-content-between mb-4">
@@ -16,7 +17,6 @@
     <table class="table table-striped">
         <thead style="text-align: center">
             <th>Product Id</th>
-      
             <th>New SBU</th>
             <th>Shift Date</th>
             <th>Action</th>
@@ -43,6 +43,7 @@
     </table>
 
     @include('layouts.footer')
+
 </div>
 
 <script>
@@ -55,4 +56,5 @@
         printWindow.document.close();
         printWindow.print();
     }
+    </script>
 </div>

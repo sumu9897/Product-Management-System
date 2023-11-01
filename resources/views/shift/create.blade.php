@@ -19,11 +19,12 @@
             <select name="product_serial" id="product_serial" class="form-control" onchange="updateProductNameAndSBU()">
                 <option value="" disabled selected>Select Product</option>
                 @foreach($products as $row)
-                    @if ($row->status == 'stock')
-                        <option value="{{ $row->serial }}" data-status="{{ $row->status }}" data-name="{{ $row->name }}" data-sbu="{{ $row->SBU }}">
+                    {{-- @if ($row->status == 'stock') --}}
+                        {{-- <option value="{{ $row->serial }}" data-status="{{ $row->status }}" data-name="{{ $row->name }}" data-sbu="{{ $row->SBU }}"> --}}
+                            <option value="{{ $row->serial }}"  data-name="{{ $row->name }}" data-sbu="{{ $row->SBU }}">
                             {{ $row->serial }} - {{ $row->name }} - {{ $row->SBU }}
                         </option>
-                    @endif
+                    {{-- @endif --}}
                 @endforeach
             </select>
             @if($errors->has('product_serial'))
@@ -33,12 +34,12 @@
 
         <div class="form-group">
             <label for="product_name">Product Name:</label>
-            <span name="product_name" id="product_name">Unknown Product</span>
+            <span name="product_name" id="product_name"> </span>
         </div>
 
         <div class="form-group">
             <label for="product_sbu">Product SBU:</label>
-            <span name="SBU" id="product_sbu">Unknown SBU</span>
+            <span name="SBU" id="product_sbu"> </span>
         </div>
 
         <div class="form-group">
@@ -79,3 +80,6 @@
         productSBUElement.textContent = selectedOption.getAttribute('data-sbu') || 'Unknown SBU';
     }
 </script>
+
+
+
