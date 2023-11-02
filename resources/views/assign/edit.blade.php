@@ -101,7 +101,7 @@
 
     <form action="{{ route('assign.update', $assign->id) }}" method="POST">
         @csrf
-        @method('PUT') <!-- Add this line to specify that it's an update request -->
+         <!-- @method('PUT') Add this line to specify that it's an update request -->
 
         <!-- Add a hidden field for the assign ID -->
         <input type="hidden" name="assign_id" value="{{ $assign->id }}">

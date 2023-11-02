@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\Product; // Import the Product model
-use App\Models\Assign;
 
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use App\Models\Assign;
 
 class ProductController extends Controller
 {
@@ -26,15 +26,10 @@ class ProductController extends Controller
         // Count all products
         $productCount = Product::count();
 
-    // Count products with status 'disable'
-    $disabledProductCount = Product::where('status', 'disable')->count();
-
-    // Share the product count variables with all views
-    View::share('productCount', $productCount);
-    View::share('disabledProductCount', $disabledProductCount);
+        // Share the product count variable with all views
+        View::share('productCount', $productCount);
 
         return view('product.all', compact('products'));
-    
     }
 
     public function create()
@@ -44,27 +39,15 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'serial' => 'required|unique:products,serial', // Validate uniqueness of serial
-            'price' => 'required|numeric|min:0', // Example rule for price (numeric and greater than or equal to 0)
-            'model' => 'required',
-            'status' => 'required|in:active,stock,disable', // Example rule for status (must be one of these values)
-            //'document' => 'file', // Example rule for document (file upload)
-            'SBU' => 'required|in:JMI Group,JMIBL,JHL,JMEL,JFL,JGL,JSL', // Example rule for SBU (must be one of these values)
-            'capacity' => 'required',
-            'description' => 'required',
-            'Purchase_Date' => 'required|date',
-            'P_WG' => 'required',
-        ]);
-
         $product = Product::create([
             'name' => $request->name,
-            'serial' => $request->serial,
+            'id' => $request->id,
+            //'serial' => rand(1000000, 9999999),
+            'serial' =>$request ->serial,
             'price' => $request->price,
             'model' => $request->model,
             'status' => $request->status,
-            'document' => $request->file('document')->store('documents'), // Store the uploaded file
+            'document' => $request->document,
             'SBU' => $request->SBU,
             'capacity' => $request->capacity,
             'description' => $request->description,
@@ -74,10 +57,6 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'Product successfully stored.');
     }
-
-
-
-   
 
     /**
      * Display the specified resource.
@@ -118,6 +97,8 @@ class ProductController extends Controller
 
         $product->update([
             'name' => $request ->name,
+            'id' => $request -> id,
+            
             //'serial' => $request ->serial,
             //'serial' => rand(1000000, 9999999),
             'price' => $request ->price,

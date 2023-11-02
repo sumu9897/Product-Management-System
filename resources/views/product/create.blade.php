@@ -25,18 +25,14 @@
         </div>
 
         <div class="form-group">
-            <label for="serial">Product Serial</label>
-            <input required="required" type="text" name="serial" id="serial" class="form-control" placeholder="Enter product Serial Number">
-            <p id="error-message" style="color: red;">@error('serial'){{ $message }}@enderror</p>
-        </div>
-        
-        
-
-        <div class="form-group">
             <label for="model">Product Model</label>
             <input required="required" type="text" name="model" class="form-control" placeholder="Enter product model">
         </div>
 
+        <div class="form-group">
+            <label for="model">Product Serisl</label>
+            <input required="required" type="text" name="serial" class="form-control" placeholder="Enter product Serial">
+        </div>
 
         <div class="form-group">
             <label for="capacity">Product Capacity</label>
@@ -48,10 +44,23 @@
             <textarea name="description" rows="5" placeholder="Enter product description" class="form-control"></textarea>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="document">Product Document</label><br>
             <input  type="file" name="document">
-        </div>
+        </div> -->
+        <div class="form-group">
+                    <label for="fileUpload">Attachment (if any):</label>
+                    @if (!empty($products->document))
+                        <div>
+                            <a href="{{ asset($products->document[0]) }}" target="_blank">
+                                <i class="fas fa-paperclip"></i>Attachment available
+                            </a>
+                        </div>
+                    @else
+                        <p>No attachment available.</p>
+                    @endif
+                    <input type="file" class="form-control-file" id="fileUpload" name="fileUpload">
+                </div>
 
         <div class="form-group">
             <label for="price">Product Price</label>
@@ -77,6 +86,7 @@
             </select>
         </div>
         
+
         <div class="form-group">
             <label>Product Status</label><br>
             <div class="radio-group">
@@ -95,7 +105,3 @@
     </form>
     @include('layouts.footer')
 </div>
-
-
-
-

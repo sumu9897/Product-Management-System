@@ -29,6 +29,11 @@
             <label>Product Model</label>
             <input type="text" name="model" required="required" class="form-control" placeholder="product model" value="{{ $product->model }}">
         </div>
+
+        <div class="form-group">
+            <label>Product Model</label>
+            <input type="text" name="serial" required="required" class="form-control" placeholder="product serial" value="{{ $product->serial }}">
+        </div>
         <div class="form-group">
             <label>Product Capacity</label>
             <input type="text" name="capacity" required="required" class="form-control" placeholder="product capacity" value="{{ $product->capacity }}">
@@ -63,9 +68,6 @@
                 <option value="JSL" {{ $product->SBU == 'JSL' ? 'selected' : '' }}>JSL</option>
             </select>
         </div>
-        
-
-
 
         <script>
             document.getElementById('purchaseSBU').addEventListener('change', function () {
@@ -94,6 +96,7 @@
                 <span class="error invalid-feedback">{!! $errors->first('status') !!}</span>
             @endif
         </div>
+        
         <div class="form-group">
             <label>Product Warranty or Guarantee</label>
             <input type="text" name="P_WG" required="required" class="form-control" placeholder="Product Warranty or Guarantee" value="{{ $product->P_WG }}">
