@@ -11,9 +11,25 @@ use Illuminate\Support\Facades\Validator;
 
 class AssignController extends Controller
 {
-    public function all()
+    
+
+    public function all(Request $request)
     {
-        $assigns = Assign::paginate(10);
+        // $assigns = Assign::paginate(10);
+        // return view('assign.all', compact('assigns'));
+
+        $search = $request->input('search');
+    
+        if ($search) {
+            // Search for users by name or ID
+            $assigns = Assign::where('product_serial', 'like', '%' . $search . '%')
+                ->orWhere('product_serial', $search)
+                ->paginate(10);
+        } else {
+            // Retrieve all users
+            $assigns = Assign::paginate(10);
+        }
+    
         return view('assign.all', compact('assigns'));
     }
 
@@ -156,13 +172,6 @@ class AssignController extends Controller
 
         return redirect()->back()->with('success', 'Data deleted successfully.');
     }
-
-
-
-
-
-
-
 
     // Retrieve all assigns and count them
     public function index()

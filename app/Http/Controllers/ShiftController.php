@@ -74,5 +74,53 @@ class ShiftController extends Controller
         return redirect()->route('shift.all')->with('success', 'Shift created successfully!');
     }
 
+    public function show($id)
+    {
+        $shift = Shift::findOrFail($id);
+
+        return view('shift.show', compact('shift'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $shift = Shift::findOrFail($id);
+
+        return view('shift.edit', compact('shift'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $shift =  Shift::findOrFail($id);
+
+        $shift->update([
+
+
+            'product_name' => $request ->product_name,
+            'product_serial' => $request -> product_serial,
+            'SBU' => $request -> SBU,
+            'Now_SBU' => $request ->Now_SBU,
+            'Shift_Date' => $request -> Shift_Date,
+            'Shift_by' => $request -> Shift_by,
+            
+            
+        ]);
+
+        return redirect()->back()->with('success', 'SBU successfully updated.');
+    }
+
+
     // Other controller methods (update, edit, destroy) can be added as needed
 }

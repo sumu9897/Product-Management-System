@@ -3,7 +3,14 @@
 <div class="content">
     <div class="d-flex justify-content-between mb-4">
         <h3>Assigns List</h3>
-        <a class="btn btn-success btn-sm" href="{{ route('assign.create') }}">Create New</a>
+        <form action="{{ route('assign.all') }}" method="GET" id="searchForm">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search by name or ID" name="search" id="searchInput">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
         <button class="btn btn-primary btn-sm" onclick="downloadTable()">Download Table</button>
     </div>
 

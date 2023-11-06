@@ -30,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            <label for="model">Product Serisl</label>
+            <label for="model">Product Serial</label>
             <input required="required" type="text" name="serial" class="form-control" placeholder="Enter product Serial">
         </div>
 

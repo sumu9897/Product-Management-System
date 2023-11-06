@@ -147,10 +147,10 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'user successfully deleted.');
     }
 
-    private function generateUniqueId()
-    {
-        return str_pad(mt_rand(100000, 999999), 6, '0', STR_PAD_LEFT);
-    }
+    // private function generateUniqueId()
+    // {
+    //     return str_pad(mt_rand(100000, 999999), 6, '0', STR_PAD_LEFT);
+    // }
 
 
     
