@@ -19,12 +19,9 @@
             <select name="product_serial" id="product_serial" class="form-control" onchange="updateProductNameAndSBU()">
                 <option value="" disabled selected>Select Product</option>
                 @foreach($products as $row)
-                    {{-- @if ($row->status == 'stock') --}}
-                        {{-- <option value="{{ $row->serial }}" data-status="{{ $row->status }}" data-name="{{ $row->name }}" data-sbu="{{ $row->SBU }}"> --}}
                             <option value="{{ $row->serial }}"  data-name="{{ $row->name }}" data-sbu="{{ $row->SBU }}">
                             {{ $row->serial }} - {{ $row->name }} - {{ $row->SBU }}
                         </option>
-                    {{-- @endif --}}
                 @endforeach
             </select>
             @if($errors->has('product_serial'))

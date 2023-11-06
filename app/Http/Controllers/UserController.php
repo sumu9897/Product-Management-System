@@ -14,17 +14,21 @@ class UserController extends Controller
      */
     public function all(Request $request)
 {
+
     $search = $request->input('search');
 
     if ($search) {
-        // Search for users by name or ID
-        $users = User::where('name', 'like', '%' . $search . '%')
-            ->orWhere('user_id', $search)
-            ->paginate(10);
+        // Search for users by name, user_id, or department
+        $users = User::where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('user_id', $search)
+                ->orWhere('department', 'like', '%' . $search . '%');
+        })->paginate(10);
     } else {
         // Retrieve all users
         $users = User::paginate(10);
     }
+
 
     return view('user.all', compact('users'));
 }

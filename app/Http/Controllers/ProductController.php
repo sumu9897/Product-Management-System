@@ -11,17 +11,21 @@ class ProductController extends Controller
 {
     public function all(Request $request)
     {
+
         $search = $request->input('search');
 
-        if ($search) {
-            // Search for products by name or ID
-            $products = Product::where('name', 'like', '%' . $search . '%')
-                ->orWhere('serial', $search)
-                ->paginate(10);
-        } else {
-            // Retrieve all products
-            $products = Product::paginate(10);
-        }
+            if ($search) {
+                // Search for products by name, ID, sbu, or status
+                $products = Product::where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('serial', $search)
+                        ->orWhere('SBU', 'like', '%' . $search . '%')
+                        ->orWhere('status', 'like', '%' . $search . '%');
+                })->paginate(10);
+            } else {
+                // Retrieve all products
+                $products = Product::paginate(10);
+            }
 
         // Count all products
         $productCount = Product::count();
